@@ -160,10 +160,48 @@ export interface JobStatusHistory {
 
 // Form types for creating/updating entities
 export type CreateJobInput = Omit<Job, "id" | "dateSaved">;
-export type UpdateJobInput = Partial<CreateJobInput> & { id: string };
+export type UpdateJobInput = Partial<CreateJobInput>;
 
 export type CreateCompanyInput = Omit<Company, "id">;
-export type UpdateCompanyInput = Partial<CreateCompanyInput> & { id: string };
+export type UpdateCompanyInput = Partial<CreateCompanyInput>;
 
 export type CreateContactInput = Omit<Contact, "id">;
-export type UpdateContactInput = Partial<CreateContactInput> & { id: string };
+export type UpdateContactInput = Partial<CreateContactInput>;
+
+// Search and filter types
+export interface JobFilters {
+  status?: JobStatus[];
+  companyId?: string;
+  seniorityLevel?: SeniorityLevel[];
+  jobType?: JobType[];
+  salaryMin?: number;
+  salaryMax?: number;
+  dateRange?: {
+    start: string;
+    end: string;
+  };
+}
+
+export interface SearchOptions {
+  query?: string;
+  filters?: JobFilters;
+  sortBy?: "dateSaved" | "dateApplied" | "jobTitle" | "excitementLevel";
+  sortOrder?: "asc" | "desc";
+  limit?: number;
+  offset?: number;
+}
+
+// Result types for better API responses
+export interface ServiceResult<T> {
+  success: boolean;
+  data?: T;
+  error?: string;
+}
+
+export interface PaginatedResult<T> {
+  items: T[];
+  total: number;
+  page: number;
+  pageSize: number;
+  hasMore: boolean;
+}

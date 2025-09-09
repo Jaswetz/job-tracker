@@ -1,0 +1,26 @@
+{
+  "enabled": true,
+  "name": "Documentation Sync",
+  "description": "Listens to all TypeScript, Vue, and configuration files in the repository and triggers documentation updates in README.md when source code changes",
+  "version": "1",
+  "when": {
+    "type": "userTriggered",
+    "patterns": [
+      "src/**/*.ts",
+      "src/**/*.vue",
+      "electron/*.ts",
+      "*.ts",
+      "*.js",
+      "*.json",
+      "drizzle.config.ts",
+      "package.json",
+      "vite.config.ts",
+      "tsconfig*.json",
+      "eslint.config.ts"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Source code has been modified in this Vue 3 + TypeScript + Electron job search tracker application. Please review the changes and update the README.md file to reflect any new features, API changes, configuration updates, or architectural modifications. Focus on keeping the documentation accurate and helpful for developers working on this project. If there are significant changes, also consider whether any additional documentation should be created or updated. "
+  }
+}

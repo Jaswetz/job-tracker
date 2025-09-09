@@ -63,42 +63,48 @@ import { useJobsStore } from "../stores/jobs";
 import { useCompaniesStore } from "../stores/companies";
 import { useContactsStore } from "../stores/contacts";
 
-// Icons (using simple SVG components for now)
+import BaseIcon from "./icons/BaseIcon.vue";
+
+// Icon components with better structure
 const DashboardIcon = {
+  components: { BaseIcon },
   template: `
-    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <BaseIcon>
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
             d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z"/>
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
             d="M8 5a2 2 0 012-2h4a2 2 0 012 2v2H8V5z"/>
-    </svg>
+    </BaseIcon>
   `,
 };
 
 const JobsIcon = {
+  components: { BaseIcon },
   template: `
-    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <BaseIcon>
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
             d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 012 2v6M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2m-8 0V6a2 2 0 00-2 2v6"/>
-    </svg>
+    </BaseIcon>
   `,
 };
 
 const CompaniesIcon = {
+  components: { BaseIcon },
   template: `
-    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <BaseIcon>
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
             d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
-    </svg>
+    </BaseIcon>
   `,
 };
 
 const ContactsIcon = {
+  components: { BaseIcon },
   template: `
-    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <BaseIcon>
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
             d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"/>
-    </svg>
+    </BaseIcon>
   `,
 };
 

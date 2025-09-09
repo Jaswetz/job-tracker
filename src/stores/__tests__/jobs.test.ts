@@ -1,12 +1,27 @@
-import { describe, it, expect, beforeEach } from "vitest";
+import { describe, it, expect, beforeEach, vi } from "vitest";
 import { setActivePinia, createPinia } from "pinia";
 import { useJobsStore } from "../jobs";
 import { JobType, SeniorityLevel, JobStatus, JobSource } from "../../types";
-import type { Job } from "../../types";
+import type { Job, CreateJobInput } from "../../types";
+
+// Mock the JobService
+vi.mock("../../services/job", () => ({
+  JobService: vi.fn().mockImplementation(() => ({
+    findAll: vi.fn().mockResolvedValue([]),
+    create: vi.fn(),
+    update: vi.fn(),
+    delete: vi.fn(),
+    search: vi.fn().mockResolvedValue([]),
+  })),
+}));
 
 describe("Jobs Store", () => {
+  let store: ReturnType<typeof useJobsStore>;
+
   beforeEach(() => {
     setActivePinia(createPinia());
+    store = useJobsStore();
+    vi.clearAllMocks();
   });
 
   it("should initialize with empty state", () => {
