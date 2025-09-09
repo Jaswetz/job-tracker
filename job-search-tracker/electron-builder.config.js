@@ -1,0 +1,40 @@
+/**
+ * @type {import('electron-builder').Configuration}
+ */
+module.exports = {
+  appId: "com.jobsearchtracker.app",
+  productName: "Job Search Tracker",
+  directories: {
+    output: "release",
+  },
+  files: ["dist/**/*", "dist-electron/**/*", "node_modules/**/*", "package.json"],
+  mac: {
+    category: "public.app-category.productivity",
+    target: [
+      {
+        target: "dmg",
+        arch: ["x64", "arm64"],
+      },
+    ],
+  },
+  win: {
+    target: [
+      {
+        target: "nsis",
+        arch: ["x64"],
+      },
+    ],
+  },
+  linux: {
+    target: [
+      {
+        target: "AppImage",
+        arch: ["x64"],
+      },
+    ],
+  },
+  nsis: {
+    oneClick: false,
+    allowToChangeInstallationDirectory: true,
+  },
+};
